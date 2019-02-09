@@ -1,0 +1,50 @@
+<div class="contextual">
+  <%= link_to l(:label_invoice_new), new_invoice_path, :class => 'icon icon-add' %>
+</div>
+
+<%= title l(:label_invoice_plural) %>
+
+<%#= form_tag({}, :method => :get) do %>
+<!--  <fieldset><legend><%#= l(:label_filter_plural) %></legend>-->
+<!--    <label for='status'><%#= l(:field_status) %>:</label>-->
+    <%#= select_tag 'status', invoice_status_options_for_select(@status), :class => "small", :onchange => "this.form.submit(); return false;"  %>
+<!--    <label for='name'><%#= l(:label_invoice) %>:</label>-->
+    <%#= text_field_tag 'name', params[:name], :size => 30 %>
+    <%#= submit_tag l(:button_apply), :class => "small", :name => nil %>
+    <%#= link_to l(:button_clear), admin_invoices_path, :class => 'icon icon-reload' %>
+<!--  </fieldset>-->
+<%# end %>
+&nbsp;
+
+<% if @invoices.any? %>
+  <div class="autoscroll">
+    <table class="list">
+      <thead><tr>
+        <th width="60px"><%=l(:field_paid)%></th>
+        <th width="60px"><%=l(:label_invoice_status)%></th>
+        <th><%=l(:label_invoice)%></th>
+        <th><%=l(:field_invoice_amount)%></th>
+        <th><%=l(:field_invoice_author)%></th>
+        <th></th>
+      </tr></thead>
+      <tbody>
+      <% @invoices.each do |invoice| %>
+        <tr class="<%= invoice.css_classes %>">
+          <td><%= checked_image invoice.paid? %></td>
+          <td><%= invoice.status.upcase %></td>
+          <td><%= link_to(invoice.title, invoice) %></td>
+          <td><%= invoice.amount %></td>
+          <td><%= invoice.author.name %></td>
+          <td class="buttons">
+            <%#= link_to(l(:button_copy), copy_invoice_path(invoice), :class => 'icon icon-copy') %>
+            <%#= link_to(l(:button_delete), invoice_path(invoice), :method => :delete, :class => 'icon icon-del') %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <span class="pagination"><%= pagination_links_full @invoice_pages, @invoice_count %></span>
+<% else %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% end %>
