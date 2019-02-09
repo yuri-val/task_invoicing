@@ -1,0 +1,13 @@
+# English strings go here for Rails i18n
+ru:
+  label_invoice_plural: Счета
+  label_invoices_plural: Счета
+  label_invoices_plural2: Счёта
+  label_invoices_plural5: Счетов
+  label_invoice_new: Новый счет
+  label_invoice: Счет
+  field_paid: Оплачен
+  field_invoice_amount: Сумма
+  label_invoice_status: Статус
+  field_invoice_author: Автор
+

@@ -1,0 +1,9 @@
+# English strings go here for Rails i18n
+en:
+  label_invoices_plural: Invoices
+  label_invoices_new: New invoice
+  label_invoice: Invoice
+  field_paid: Paid
+  field_invoice_amount: Amount
+  label_invoice_status: Status
+  field_invoice_author: Author
